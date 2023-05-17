@@ -1,4 +1,4 @@
-package constans;
+package constants;
 
 public class ApiEndpoints {
     public static String BASE_URL = "https://stellarburgers.nomoreparties.site/api";
