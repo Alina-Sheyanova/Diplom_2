@@ -18,13 +18,6 @@ public class UserCreateTest {
     private User user;
     private String accessToken;
 
-    @After
-    public void cleanUp() {
-        if (accessToken != null) {
-            userSteps.userDelete(accessToken);
-        }
-    }
-
     @Test
     @DisplayName("Проверка создания нового пользователя с рандомными валидными данными")
     @Description("Проверяем, что токен не пустой")
@@ -110,5 +103,12 @@ public class UserCreateTest {
                 .body("message", equalTo("Email, password and name are required fields"))
                 .and()
                 .statusCode(403);
+    }
+
+    @After
+    public void cleanUp() {
+        if (accessToken != null) {
+            userSteps.userDelete(accessToken);
+        }
     }
 }
