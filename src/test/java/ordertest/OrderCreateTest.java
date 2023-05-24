@@ -33,7 +33,7 @@ public class OrderCreateTest {
 
     @Test
     @DisplayName("Создание заказа с авторизацией пользователя и с валидным хэшем ингредиентов")
-    public void createOrderWithUserLoginAndCorrectIngHashShouldReturnOk() {
+    public void createOrderWithUserLoginAndCorrectIngHashTest() {
         User user = UserRandomData.createNewRandomUser();
         Order order = new Order(validIngredient);
         response = userSteps.userCreate(user);
@@ -47,7 +47,7 @@ public class OrderCreateTest {
 
     @Test
     @DisplayName("Создание заказа без авторизации пользователя и с пустым хэшем ингредиентов")
-    public void createOrderWithoutUserLoginAndEmptyIngHashShouldReturnOk() {
+    public void createOrderWithoutUserLoginAndEmptyIngHashTest() {
         Order order = new Order(validIngredient);
         response = orderSteps.createOrderWithToken(order, "");
         response.then()
@@ -58,7 +58,7 @@ public class OrderCreateTest {
 
     @Test
     @DisplayName("Создание заказа без хэша ингредиентов")
-    public void createOrderWithoutUserLoginAndWithoutIngHashShouldReturnError() {
+    public void createOrderWithoutUserLoginAndWithoutIngHashTest() {
         User user = UserRandomData.createNewRandomUser();
         Order order = new Order();
         response = userSteps.userCreate(user);
@@ -71,7 +71,7 @@ public class OrderCreateTest {
 
     @Test
     @DisplayName("Создание заказа с пустым списком ингредиентов")
-    public void createOrderWithoutIngredientsShouldReturnError() {
+    public void createOrderWithoutIngredientsTest() {
         User user = UserRandomData.createNewRandomUser();
         Order order = new Order();
         response = userSteps.userCreate(user);
@@ -84,7 +84,7 @@ public class OrderCreateTest {
 
     @Test
     @DisplayName("Создание заказа с неверным хешем ингредиентов")
-    public void createOrderWithWrongIngredientHashReturnError() {
+    public void createOrderWithWrongIngredientTest() {
         validIngredient.set_id("MutantIngredientTokenWussHere.");
         Order order = new Order(validIngredient);
         User user = UserRandomData.createNewRandomUser();
@@ -97,7 +97,7 @@ public class OrderCreateTest {
 
     @Test
     @DisplayName("Проверка наличия ингредиентов в базе")
-    public void getStatusOfIngredients() {
+    public void getStatusOfIngredientsTest() {
         response = orderSteps.getIngredients();
         response.then()
                 .body("success", equalTo(true))

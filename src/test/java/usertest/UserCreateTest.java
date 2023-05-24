@@ -21,7 +21,7 @@ public class UserCreateTest {
     @Test
     @DisplayName("Проверка создания нового пользователя с рандомными валидными данными")
     @Description("Проверяем, что токен не пустой")
-    public void createUserTestMustBeSuccessful() {
+    public void createUserTest() {
         user = UserRandomData.createNewRandomUser();
         response = userSteps.userCreate(user);
         accessToken = response
@@ -35,7 +35,7 @@ public class UserCreateTest {
     @Test
     @DisplayName("Проверка невозможности создания нового пользователя с уже указанными ранее данными")
     @Description("Проверяем код ответа 403 и текст ошибки о существовании такого пользователя")
-    public void createSameUserTestMustReturnError() {
+    public void createSameUserTest() {
         user = UserRandomData.createNewRandomUser();
         response = userSteps.userCreate(user);
         accessToken = response
@@ -52,7 +52,7 @@ public class UserCreateTest {
     @Test
     @DisplayName("Проверка создания нового пользователя со всеми пустыми полями данных")
     @Description("Проверяем код ответа 403 и текст ошибки об обязательности всех полей")
-    public void createNoDataUserTestMustReturnError() {
+    public void createNoDataUserTest() {
         user = UserRandomData.createRandomNoDataUser();
         response = userSteps.userCreate(user);
         accessToken = response
@@ -66,7 +66,7 @@ public class UserCreateTest {
     @Test
     @DisplayName("Проверка создания нового пользователя с пустым полем имени")
     @Description("Проверяем код ответа 403 и текст ошибки об обязательности всех полей")
-    public void createNoNameUserTestMustReturnError() {
+    public void createNoNameUserTest() {
         user = UserRandomData.createRandomNoNameUser();
         response = userSteps.userCreate(user);
         accessToken = response
@@ -80,7 +80,7 @@ public class UserCreateTest {
     @Test
     @DisplayName("Проверка создания нового пользователя с пустым полем почты")
     @Description("Проверяем код ответа 403 и текст ошибки об обязательности всех полей")
-    public void createNoEmailUserTestMustReturnError() {
+    public void createNoEmailUserTest() {
         user = UserRandomData.createRandomNoEmailUser();
         response = userSteps.userCreate(user);
         accessToken = response
@@ -94,7 +94,7 @@ public class UserCreateTest {
     @Test
     @DisplayName("Проверка создания нового пользователя с пустым полем пароля")
     @Description("Проверяем код ответа 403 и текст ошибки об обязательности всех полей")
-    public void createNoPasswordUserTestMustReturnError() {
+    public void createNoPasswordUserTest() {
         user = UserRandomData.createRandomNoPasswordUser();
         response = userSteps.userCreate(user);
         accessToken = response

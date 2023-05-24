@@ -29,7 +29,7 @@ public class UserLoginTest {
     @Test
     @DisplayName("Авторизация под существующим пользователем")
     @Description("Создание рандомного пользователя и авторизация с валидными данными")
-    public void loginUserMustBeSuccessful() {
+    public void loginUserTest() {
         response = userSteps.userLoginToken(user, accessToken);
         response
                 .then().body("success", equalTo(true))
@@ -40,7 +40,7 @@ public class UserLoginTest {
     @Test
     @DisplayName("Авторизация с неверным логином и паролем")
     @Description("Создание рандомного пользователя и авторизация с невалидными данными, проверяем код ответа 401")
-    public void loginUserWithWrongPasswordAndEmailMustReturnError() {
+    public void loginUserWithWrongPasswordAndEmailTest() {
         String email = user.getEmail();
         user.setEmail("wrong@email.ru");
         String password = user.getPassword();
