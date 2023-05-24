@@ -34,13 +34,6 @@ public class OrderReceivingTest {
         validIngredient = getIngredientFromArray();
     }
 
-    @After
-    public void cleanUp() {
-        if (accessToken != null) {
-            userSteps.userDelete(accessToken);
-        }
-    }
-
     @Test
     @DisplayName("Получение заказов авторизованного пользователя")
     public void getOrdersWithAuthorizedUserTest() {
@@ -66,5 +59,12 @@ public class OrderReceivingTest {
                 .body("message", equalTo("You should be authorised"))
                 .and()
                 .statusCode(401);
+    }
+
+    @After
+    public void cleanUp() {
+        if (accessToken != null) {
+            userSteps.userDelete(accessToken);
+        }
     }
 }
