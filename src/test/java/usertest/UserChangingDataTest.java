@@ -18,9 +18,7 @@ public class UserChangingDataTest {
     private Response response;
     private User user;
     private String accessToken;
-    private String name;
-    private String email;
-    private String password;
+
 
     @Before
     public void setUp() {
@@ -37,8 +35,6 @@ public class UserChangingDataTest {
         user.setName(faker.name().firstName());
         user.setEmail(faker.internet().emailAddress());
         response = userSteps.userProfileChanging(user, accessToken);
-        user.setName(name);
-        user.setEmail(email);
         response.then()
                 .body("success", equalTo(true))
                 .and()
@@ -51,7 +47,6 @@ public class UserChangingDataTest {
     public void userPasswordChangingTestWithAuthorizationTest() {
         user.setPassword(faker.internet().password());
         response = userSteps.userProfileChanging(user, accessToken);
-        user.setPassword(password);
         response.then()
                 .body("success", equalTo(true))
                 .and()
@@ -64,7 +59,6 @@ public class UserChangingDataTest {
     public void userPasswordChangingTestWithoutAuthorizationTest() {
         user.setPassword(faker.internet().password());
         response = userSteps.userProfileChanging(user, "");
-        user.setPassword(password);
         response.then()
                 .body("success", equalTo(false))
                 .and()
@@ -78,8 +72,6 @@ public class UserChangingDataTest {
         user.setName(faker.name().firstName());
         user.setEmail(faker.internet().emailAddress());
         response = userSteps.userProfileChanging(user, "");
-        user.setName(name);
-        user.setEmail(email);
         response.then()
                 .body("success", equalTo(false))
                 .and()
